@@ -1,0 +1,140 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+.controls {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1pt;
+  margin-top: -10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.controls input[type="range"] {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0;
+}
+label {
+  display: inline-block;
+  width: 150px;
+}
+
+/* HP Bar Styles */
+.hp-bar-container {
+  position: absolute;
+  top: 5%;
+  left: 9%;
+  width: 150px;
+  height: 28px;
+  z-index: 10;
+}
+.hp-bar-bg {
+  background: #222;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #444;
+  box-sizing: border-box;
+  position: relative;
+}
+#hp-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #2ecc40, #27ae60);
+  border-radius: 8px;
+}
+.hp-bar-label {
+  position: absolute;
+  right: 3%;
+  top: 5%;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* Timer Styles */
+.timer-container {
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  width: 220px;
+  z-index: 10;
+  text-align: right;
+}
+#timer-clock {
+  color: #fff;
+  font-size: 32px;
+  font-family: monospace;
+  text-shadow: 1px 1px 4px #000;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* Center the canvas horizontally and vertically */
+#glcanvas {
+  display: block;
+  margin: 0px 20px 0 auto;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+  border-radius: 10px;
+}
+
+/* Game Over Message */
+#start-game-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.start-game-text{
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font-size: 2.5rem;
+  font-family: sans-serif;
+  padding: 24px 48px;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px #000;
+  text-align: center;
+}
+
+.instructions {
+  padding: 20px;
+  max-width: 320px;
+  font-size: 1.rem;
+  font-family: Arial, sans-serif;
+  text-align: left;
+}
+
+h1, h2 {
+  color: #204d2a;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+p {
+  text-align: justify;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Retro-Bot-Run</title>
+    <script src="https://www.ime.usp.br/~hitoshi/mac0420/libs/macWebglUtils.js"></script>
+    <script src="https://www.ime.usp.br/~hitoshi/mac0420/libs/MVnew.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/shaders.js"></script>
+    <script src="assets/js/objects.js"></script>
+    <script src="assets/js/mouse.js"></script>
+    <script src="assets/js/main.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+
+  <body>
+
+    <div class="hp-bar-container">
+      <div class="hp-bar-bg">
+        <div id="hp-bar"></div>
+        <span class="hp-bar-label">100%</span>
+      </div>
+    </div>
+    <div class="timer-container">
+      <span id="timer-clock">00:00</span>
+    </div>
+
+    <div id="start-game-overlay">
+      
+    </div>
+
+
+    <table>
+      <tr>
+        <td>
+          <canvas id="glcanvas" width="700" height="560">
+            Oops! It seems your browser does not support HTML5 canvas.
+          </canvas>
+        </td>
+        <td>
+          <div>
+            <div class="instructions">
+            <h1>Retro-Bot-Run</h1>
+            <h3>DEVELOPED BY Aaqibhafeez</h3>
+
+            <p>A 3D WebGL game where you control a robot exploring a procedurally generated city, avoiding collisions with unpredictable cars. The objective is to survive as long as possible while your health (HP) decreases upon each collision.</p>
+
+            <h2>Controls</h2>
+            
+            <ul class="controles">
+              <li><b>Move:</b> W, A, S, D</li>
+              <li><b>Jump:</b> Spacebar</li>
+              <li><b>Sprint:</b> Shift (hold)</li>
+              <li><b>Look:</b> Mouse (click on the canvas to activate pointer lock)</li>
+            </ul>
+             </div>
+            
+            <div class="controls">
+              <div>
+                <label for="velocitySlider">Character Velocity</label>
+                <input
+                type="range"
+                id="velocitySlider"
+                min="0"
+                max="30"
+                value="2"
+                step="1"/>
+              </div>
+              <div>
+                  <label for="jumpForceLabel">Jump Force</label>
+                  <input id="jumpForceSlider" class="styled" type="range" value="5" min="0" max="50" step="1" name="jumpForceSlider"></input>
+              <div>
+
+              <div>
+                <label for="gravityLabel">Gravity</label>
+                <input id="gravitySlider" class="styled" type="range" value="2" min="0" max="10" step="1" name="gravitySlider"></input>
+              <div>
+
+              <div>
+                <label for="MouseSensitivityLabel">Mouse Sensitivity</label>
+                <input id="MouseSensitivitySlider" class="styled" type="range" value="5" min="0" max="10" step="1" name="MouseSensitivitySlider"></input>
+              <div>
+
+          </div>
+        </td>
+      </tr>
+    </table>
+
+        
+    </div>    
+    
+  </body>
+</html>
