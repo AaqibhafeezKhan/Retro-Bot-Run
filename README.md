@@ -71,10 +71,8 @@ A modern browser with WebGL support (Chrome, Firefox, Edge).
 
 ### Installation & Running
 1. **Clone the repository**
-   ```bash
    git clone https://github.com/Aaqibhafeez/robot-survive.git
    cd robot-survive
-````
 
 2. **Run a local server** (required for textures / CORS)
 
