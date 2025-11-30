@@ -58,20 +58,19 @@ You need a modern web browser that supports WebGL (Chrome, Firefox, Edge, etc.).
 3.  **Play:**
     Open your browser to `localhost:8000` (or whichever port your server uses).
 
-## 📂 Project Structure
+## Project Structure
 
-/
-├── index.html          # Main entry point
+project-root/
+├── index.html                  # Main HTML file and entry point for the application.
 ├── assets/
-│   ├── css/            # UI and overlay styling
-│   └── images/         # Textures (building, car, floor, simple)
-├── js/
-│   ├── main.js         # Main game loop and rendering
-│   ├── objects.js      # Definitions for Robot and scene objects
-│   ├── mouse.js        # Camera logic and input handling
-│   ├── config.js       # Global configuration and constants
-│   └── shaders.js      # WebGL shader code
-└── 
+│   ├── css/                    # Contains stylesheets for UI, game overlay, and visual presentation.
+│   └── images/                 # Stores texture files used by 3D objects (e.g., buildings, cars, floor, simple materials).
+└── js/                         # Contains all JavaScript logic and application core.
+    ├── main.js                 # Main application script, handling the game loop, initialization, and rendering logic.
+    ├── objects.js              # Defines the geometric models (Sphere, Cube, Cylinder) and instantiates all scene objects (Robot, houses, cars).
+    ├── mouse.js                # Manages camera controls, movement, and input handling.
+    ├── config.js               # Global configuration file containing constants, parameters, and initial settings (e.g., dimensions, speeds).
+    └── shaders.js              # WebGL Shaders (Vertex and Fragment) written in GLSL for rendering the scene.
 
 ## Technical Details
 
