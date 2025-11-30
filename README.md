@@ -26,6 +26,7 @@ The project demonstrates a custom WebGL engine built from scratch with dynamic l
 - [HUD (Heads-Up Display)](#hud-heads-up-display)
 - [Known Issues](#known-issues)
 - [Future Improvements](#future-improvements)
+- [Contribution](#contribution)
 - [Credits](#credits)
 - [License](#license)
 
@@ -44,12 +45,12 @@ The HUD includes a health bar and a clock for clarity and immersion.
 
 ## Controls
 
-| Action                | Input                |
-| :-------------------: | :------------------: |
-| **Move**              | `W`, `A`, `S`, `D`   |
-| **Jump**              | `Spacebar`           |
-| **Look / Aim**        | Mouse (move to look) |
-| **Sprint**            | `Shift` (hold)       |
+| Action                  | Input                 |
+| :---------------------: | :-------------------: |
+| **Move**                | `W`, `A`, `S`, `D`    |
+| **Jump**                | `Spacebar`            |
+| **Look / Aim**          | Mouse (move to look)  |
+| **Sprint**              | `Shift` (hold)        |
 | **Start / Lock Cursor** | Click anywhere on the canvas |
 
 ---
@@ -70,24 +71,30 @@ The HUD includes a health bar and a clock for clarity and immersion.
 A modern browser with WebGL support (Chrome, Firefox, Edge).
 
 ### Installation & Running
+
 1. **Clone the repository**
+   ```bash
    git clone https://github.com/Aaqibhafeez/robot-survive.git
    cd robot-survive
+````
 
-2. **Run a local server** (required for textures / CORS)
+2. **Run a local server** (required due to browser CORS restrictions)
 
-   * Python 3:
+   **Python 3**
 
-     ```bash
-     python -m http.server 8000
-     ```
-   * Node (http-server):
+   ```bash
+   python -m http.server 8000
+   ```
 
-     ```bash
-     npx http-server -p 8000
-     ```
-3. **Open in browser**
-   Visit `http://localhost:8000` (or the port you specified).
+   **Node.js (http-server)**
+
+   ```bash
+   npx http-server -p 8000
+   ```
+
+3. **Open the game in your browser**
+   Navigate to:
+   `http://localhost:8000`
 
 ---
 
@@ -100,11 +107,11 @@ project-root/
 │   ├── css/                    # Stylesheets for UI and HUD
 │   └── images/                 # Texture files (buildings, cars, ground, robot)
 └── js/                         # JavaScript code and engine
-    ├── main.js                 # Game loop, init, rendering orchestration
-    ├── objects.js              # Geometric models & scene object instantiation
-    ├── mouse.js                # Camera controls, input handling
-    ├── config.js               # Global constants and initial parameters
-    └── shaders.js              # GLSL vertex & fragment shaders
+    ├── main.js                 # Game loop, initialization, and rendering logic
+    ├── objects.js              # Geometric models & scene object definitions
+    ├── mouse.js                # Camera and input handling
+    ├── config.js               # Global constants and configuration
+    └── shaders.js              # GLSL vertex & fragment shader programs
 ```
 
 ---
@@ -113,68 +120,75 @@ project-root/
 
 ### Scene Modeling
 
-* Objects are constructed from primitive solids to explain core graphics concepts.
-* **Robot**: Hierarchical articulated model (head → body → arms/legs).
-* **City**: Grid-based placement of cube buildings and moving cars.
+* All models are built using primitive solids (cube, cylinder, sphere).
+* **Robot**: Hierarchical articulated system (head → torso → limbs).
+* **City**: Grid-based procedural layout of buildings and cars.
 
 ### Lighting & Shaders
 
-* Implements the **Phong illumination model**:
+* Uses the **Phong Illumination Model**:
 
-  * Ambient, diffuse, and specular components.
-  * A moving sun (directional light) drives day/night lighting.
+  * Ambient
+  * Diffuse
+  * Specular
+* A directional “sun” light animates the day/night cycle.
 
 ### Physics Engine
 
-* **Gravity**: Adjustable constant for jump behavior.
+* **Gravity** applied to jumping and falling.
 * **Collision Detection**:
 
-  * Buildings: static collision (prevents entry).
-  * Cars: dynamic elastic collisions that reflect velocity and reduce player HP.
+  * Buildings: Static blocking collisions.
+  * Cars: Elastic collisions that reflect velocity and reduce HP.
 
 ---
 
 ## HUD (Heads-Up Display)
 
 * Health bar (HP).
-* Survival clock (24-hour cycle visual).
-* HUD is styled in `assets/css/` and overlays the canvas.
+* Survival timer synchronized with the 24-hour cycle.
+* Styled via `assets/css/` and rendered above the canvas.
 
 ---
 
 ## Known Issues
 
-* **Collision bounds**: Only the camera detects collisions; the visible robot mesh can clip through objects.
-* **Spawn trap**: A car may spawn on the player start location causing immediate damage.
-* **Corner cases**: Camera may get stuck in tight corners (jumping usually resolves this).
-* **Aspect ratio**: HUD elements may misalign on uncommon screen sizes.
+* Camera handles collisions instead of the robot model (causing mesh clipping).
+* Cars can occasionally spawn exactly on the player position.
+* Camera may get stuck between tight building corners.
+* HUD alignment may shift on unusual aspect ratios.
 
 ---
 
 ## Future Improvements
 
-* [ ] Full model collision (robot bounding boxes instead of camera-only).
-* [ ] Orbiting sun for dynamic shadows.
-* [ ] Chunk-based infinite city generation.
-* [ ] Animation sync (walking/jumping animations tied to movement).
-* [ ] Sound design (engine noises, impacts, ambient music).
+* [ ] Full robot mesh bounding-box collision.
+* [ ] Orbiting sun for real-time shadows.
+* [ ] Infinite world via chunk-based generation.
+* [ ] Movement-synced robot animations.
+* [ ] Sound effects and ambient audio.
 
 ---
 
 ## Contribution
 
-Contributions are welcome! If you want to help:
+Contributions are welcome!
 
-1. Fork the repo.
-2. Create a feature branch (`git checkout -b feature/my-feature`).
-3. Commit your changes and open a Pull Request describing the change.
+1. Fork the repository
+2. Create a feature branch:
 
-Please open issues for bug reports or feature requests.
+   ```bash
+   git checkout -b feature/my-feature
+   ```
+3. Commit and push your changes
+4. Open a Pull Request describing the update
+
+Please file bug reports and feature requests via GitHub Issues.
 
 ---
 
 ## Credits
 
-**Maintained and Developed by Aaqibhafeez.**
+**Maintained & Developed by Aaqibhafeez**
 
 ---
