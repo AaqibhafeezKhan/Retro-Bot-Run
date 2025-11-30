@@ -71,8 +71,7 @@ You need a modern web browser that supports WebGL (Chrome, Firefox, Edge, etc.).
 │   ├── mouse.js        # Camera logic and input handling
 │   ├── config.js       # Global configuration and constants
 │   └── shaders.js      # WebGL shader code
-└── ...
-```
+└── 
 
 ## Technical Details
 
