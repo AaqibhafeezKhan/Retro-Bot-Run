@@ -1,6 +1,3 @@
-Nice — I fixed and polished your README so it renders cleanly on **GitHub**. Copy the entire content below into `README.md` in your repo.
-
-````markdown
 # Retro-Bot-Run
 **Developed by Aaqibhafeez**
 
