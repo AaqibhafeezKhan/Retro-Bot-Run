@@ -1,116 +1,185 @@
-# Retro-Bot-Run
+Nice — I fixed and polished your README so it renders cleanly on **GitHub**. Copy the entire content below into `README.md` in your repo.
 
+````markdown
+# Retro-Bot-Run
 **Developed by Aaqibhafeez**
 
+---
 
-##  Overview
+## Overview
+**Retro-Bot-Run** is an immersive 3D WebGL game where players control a robot navigating a procedurally generated city. The goal is simple but challenging: explore the urban environment and survive for as long as possible while avoiding unpredictable traffic.
 
-**Retro-Bot-Run** is an immersive 3D WebGL game where players control a robot navigating a procedurally generated city. The goal is simple but challenging: explore the urban environment and survive for as long as possible while dodging unpredictable traffic.
+The project demonstrates a custom WebGL engine built from scratch with dynamic lighting, elastic physics, and a first-person camera.
 
-The game features a custom engine built from scratch using WebGL, showcasing dynamic lighting cycles, realistic physics, and an interactive first-person camera.
+---
 
-##  Objective
+## Table of Contents
+- [Overview](#overview)
+- [Objective](#objective)
+- [Controls](#controls)
+- [Key Features](#key-features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation & Running](#installation--running)
+- [Project Structure](#project-structure)
+- [Technical Details](#technical-details)
+  - [Scene Modeling](#scene-modeling)
+  - [Lighting & Shaders](#lighting--shaders)
+  - [Physics Engine](#physics-engine)
+- [HUD (Heads-Up Display)](#hud-heads-up-display)
+- [Known Issues](#known-issues)
+- [Future Improvements](#future-improvements)
+- [Credits](#credits)
+- [License](#license)
 
-Your primary mission is to explore the city without crashing.
+---
 
-  * **Survival:** Dodge cars moving through the streets. Each collision reduces your Health Points ($HP$).
-  * **Game Over:** The game ends when your $HP \le 0$.
-  * **Time Tracking:** A visible clock tracks your survival time, simulating a full 24-hour day/night cycle.
+## Objective
+Survive as long as possible in the procedurally generated city without crashing into cars.
 
-> **Note:** The HUD (Heads-Up Display) includes a health bar and a clock, styled for clarity and immersion.
+- **Survival:** Dodge cars moving through the streets. Each collision reduces your **Health Points (HP)**.
+- **Game Over:** When `HP <= 0`.
+- **Time Tracking:** A visible clock tracks survival time and simulates a 24-hour day/night cycle.
 
-##  Controls
+The HUD includes a health bar and a clock for clarity and immersion.
 
-The game utilizes standard FPS (First-Person Shooter) style controls.
+---
 
-| Action | Input |
-| :--- | :--- |
-| **Move** | `W`, `A`, `S`, `D` keys |
-| **Jump** | `Spacebar` |
-| **Look/Aim** | Mouse (Move to look) |
-| **Sprint** | `Shift` (Hold) |
-| **Start/Lock Cursor** | **Click** anywhere on the canvas |
+## Controls
 
-##  Key Features
+| Action                | Input                |
+| :-------------------: | :------------------: |
+| **Move**              | `W`, `A`, `S`, `D`   |
+| **Jump**              | `Spacebar`           |
+| **Look / Aim**        | Mouse (move to look) |
+| **Sprint**            | `Shift` (hold)       |
+| **Start / Lock Cursor** | Click anywhere on the canvas |
 
-  * **First-Person Camera:** An immersive perspective positioned at the robot's head height.
-  * **Dynamic Environment:** A procedurally generated city composed of building blocks and streets.
-  * **Day/Night Cycle:** The sun's position and environmental lighting change smoothly based on a simulated 24-hour clock.
-  * **Elastic Physics:** Experience gravity-based jumping and elastic collisions with vehicles (collisions reflect velocity and reduce HP).
-  * **Rich Texturing:** Distinct textures for the articulated robot, buildings (concrete/brick), cars (metal/aluminum), and the ground.
+---
 
-##  Getting Started
+## Key Features
+- **First-Person Camera:** Immersive viewpoint positioned at robot head height.
+- **Procedural City:** Grid-based generation of buildings and streets.
+- **Day / Night Cycle:** Smooth lighting changes simulating a 24-hour cycle.
+- **Elastic Physics:** Gravity-based jumping and elastic collisions with vehicles.
+- **Rich Texturing:** Textures for robot, buildings, cars, and ground.
+- **Custom WebGL Engine:** Minimal dependencies — everything rendered with raw WebGL.
+
+---
+
+## Getting Started
 
 ### Prerequisites
-
-You need a modern web browser that supports WebGL (Chrome, Firefox, Edge, etc.).
+A modern browser with WebGL support (Chrome, Firefox, Edge).
 
 ### Installation & Running
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Aaqibhafeez/robot-survive.git
+   cd robot-survive
+````
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/Aaqibhafeez/robot-survive.git
-    ```
-2.  **Run a local server:**
-    Due to browser security policies regarding CORS (Cross-Origin Resource Sharing), textures will not load if you simply double-click `index.html`. You must run a local server.
-      * *Python example:* `python -m http.server`
-      * *Node example:* `npx http-server`
-3.  **Play:**
-    Open your browser to `localhost:8000` (or whichever port your server uses).
+2. **Run a local server** (required for textures / CORS)
+
+   * Python 3:
+
+     ```bash
+     python -m http.server 8000
+     ```
+   * Node (http-server):
+
+     ```bash
+     npx http-server -p 8000
+     ```
+3. **Open in browser**
+   Visit `http://localhost:8000` (or the port you specified).
+
+---
 
 ## Project Structure
 
+```
 project-root/
-├── index.html                  # Main HTML file and entry point for the application.
+├── index.html                  # Main HTML entry point
 ├── assets/
-│   ├── css/                    # Contains stylesheets for UI, game overlay, and visual presentation.
-│   └── images/                 # Stores texture files used by 3D objects (e.g., buildings, cars, floor, simple materials).
-└── js/                         # Contains all JavaScript logic and application core.
-    ├── main.js                 # Main application script, handling the game loop, initialization, and rendering logic.
-    ├── objects.js              # Defines the geometric models (Sphere, Cube, Cylinder) and instantiates all scene objects (Robot, houses, cars).
-    ├── mouse.js                # Manages camera controls, movement, and input handling.
-    ├── config.js               # Global configuration file containing constants, parameters, and initial settings (e.g., dimensions, speeds).
-    └── shaders.js              # WebGL Shaders (Vertex and Fragment) written in GLSL for rendering the scene.
+│   ├── css/                    # Stylesheets for UI and HUD
+│   └── images/                 # Texture files (buildings, cars, ground, robot)
+└── js/                         # JavaScript code and engine
+    ├── main.js                 # Game loop, init, rendering orchestration
+    ├── objects.js              # Geometric models & scene object instantiation
+    ├── mouse.js                # Camera controls, input handling
+    ├── config.js               # Global constants and initial parameters
+    └── shaders.js              # GLSL vertex & fragment shaders
+```
+
+---
 
 ## Technical Details
 
 ### Scene Modeling
 
-All objects are constructed using primitive solids to demonstrate foundational graphics concepts:
-
-  * **Robot:** Articulated hierarchical model (Head $\rightarrow$ Body $\rightarrow$ Arms/Legs).
-  * **City:** Grid-based logic using cubes for buildings and cars.
+* Objects are constructed from primitive solids to explain core graphics concepts.
+* **Robot**: Hierarchical articulated model (head → body → arms/legs).
+* **City**: Grid-based placement of cube buildings and moving cars.
 
 ### Lighting & Shaders
 
-The game implements the **Phong Illumination Model**, calculating Ambient, Diffuse, and Specular reflection to create realistic lighting that reacts to the moving sun source.
+* Implements the **Phong illumination model**:
+
+  * Ambient, diffuse, and specular components.
+  * A moving sun (directional light) drives day/night lighting.
 
 ### Physics Engine
 
-  * **Gravity:** Adjustable constant affecting jump height and falling speed.
-  * **Collision Detection:**
-      * *Buildings:* Static collision (prevents entry).
-      * *Cars:* Dynamic elastic collision (calculates velocity reflection and damage).
+* **Gravity**: Adjustable constant for jump behavior.
+* **Collision Detection**:
+
+  * Buildings: static collision (prevents entry).
+  * Cars: dynamic elastic collisions that reflect velocity and reduce player HP.
+
+---
+
+## HUD (Heads-Up Display)
+
+* Health bar (HP).
+* Survival clock (24-hour cycle visual).
+* HUD is styled in `assets/css/` and overlays the canvas.
+
+---
 
 ## Known Issues
 
-  * **Collision Bounds:** Currently, the *camera* detects collisions, not the robot model itself. This allows the robot's body to visually clip through objects occasionally.
-  * **Spawn Trap:** If a car spawns exactly on the player's start location, immediate damage may occur.
-  * **Corner Cases:** The camera may rarely get stuck in tight building corners (jumping usually fixes this).
-  * **Resolution:** HUD elements may be misaligned on non-standard screen aspect ratios.
+* **Collision bounds**: Only the camera detects collisions; the visible robot mesh can clip through objects.
+* **Spawn trap**: A car may spawn on the player start location causing immediate damage.
+* **Corner cases**: Camera may get stuck in tight corners (jumping usually resolves this).
+* **Aspect ratio**: HUD elements may misalign on uncommon screen sizes.
+
+---
 
 ## Future Improvements
 
-  * [ ] **Full Model Collision:** Implement bounding box collision for the robot mesh, not just the camera.
-  * [ ] **Orbiting Sun:** Animate the sun to physically orbit the scene for dynamic shadow casting.
-  * [ ] **Infinite City:** Implement "chunk" generation to create an endless world as the player moves.
-  * [ ] **Animation Sync:** Synchronize walking/jumping animations with movement speed.
-  * [ ] **Sound Design:** Add engine noises, collision impacts, and background tracks.
+* [ ] Full model collision (robot bounding boxes instead of camera-only).
+* [ ] Orbiting sun for dynamic shadows.
+* [ ] Chunk-based infinite city generation.
+* [ ] Animation sync (walking/jumping animations tied to movement).
+* [ ] Sound design (engine noises, impacts, ambient music).
 
------
+---
 
-### Credits
+## Contribution
+
+Contributions are welcome! If you want to help:
+
+1. Fork the repo.
+2. Create a feature branch (`git checkout -b feature/my-feature`).
+3. Commit your changes and open a Pull Request describing the change.
+
+Please open issues for bug reports or feature requests.
+
+---
+
+## Credits
 
 **Maintained and Developed by Aaqibhafeez.**
 
------
+---
